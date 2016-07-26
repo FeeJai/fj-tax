@@ -33,6 +33,8 @@ gem 'jbuilder', '~> 2.5'
 # Use devise for user authenitcation and authorization
 gem 'devise'
 
+# Bootstrap as design layout for now
+gem 'bootstrap', '~> 4.0.0.alpha3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
