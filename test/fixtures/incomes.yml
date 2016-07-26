@@ -1,0 +1,35 @@
+# == Schema Information
+#
+# Table name: incomes
+#
+#  id                :integer          not null, primary key
+#  tax_return_id     :integer
+#  employer_fed      :string
+#  wages             :decimal(9, 2)
+#  fed_tax_withheld  :decimal(9, 2)
+#  state_tax_witheld :decimal(9, 2)
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tax_return: one
+  employer_fed: MyString
+  wages: 
+  wages: 
+  fed_tax_withheld: 
+  fed_tax_withheld: 
+  state_tax_witheld: 
+  state_tax_witheld: 
+
+two:
+  tax_return: two
+  employer_fed: MyString
+  wages: 
+  wages: 
+  fed_tax_withheld: 
+  fed_tax_withheld: 
+  state_tax_witheld: 
+  state_tax_witheld: 

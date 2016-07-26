@@ -1,0 +1,38 @@
+# == Schema Information
+#
+# Table name: tax_returns
+#
+#  id               :integer          not null, primary key
+#  user_id          :integer
+#  year             :integer
+#  visa             :integer
+#  arrival          :date
+#  departure        :date
+#  previous         :boolean
+#  previous_visits  :jsonb
+#  previous_returns :jsonb
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  year: 1
+  visa: 1
+  arrival: 2016-07-26
+  departure: 2016-07-26
+  previous: false
+  previous_visits: 
+  previous_returns: 
+
+two:
+  user: two
+  year: 1
+  visa: 1
+  arrival: 2016-07-26
+  departure: 2016-07-26
+  previous: false
+  previous_visits: 
+  previous_returns: 
