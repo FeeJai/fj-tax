@@ -1,0 +1,39 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    / Required meta tags always come first
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}/
+    %meta{:content => "ie=edge", "http-equiv" => "x-ua-compatible"}/
+    %title FJ Tax - Free and open source tax return for J-1
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    %nav.navbar.navbar-light.navbar-fixed-top{style: "background-color: #e3f2fd"}
+      %button.navbar-toggler.hidden-sm-up{"data-target" => "#exCollapsingNavbar2", "data-toggle" => "collapse", :type => "button"} ☰
+
+      .collapse.navbar-toggleable-xs#exCollapsingNavbar2
+        %a.navbar-brand{:href => "#"} FJ Tax
+        .nav.navbar-nav.pull-xs-right
+          %a.nav-item.nav-link.active{:href => "#"}
+            Home
+            %span.sr-only (current)
+          %a.nav-item.nav-link{:href => "#"} Features
+          %a.nav-item.nav-link{:href => "#"} Pricing
+          %a.nav-item.nav-link{:href => "#"} About
+
+    .container
+      .bg
+      .jumbotron
+        %h1.display-3
+          = t 'landing.heading'
+        .lead
+          = t 'landing.subtitle'
+
+
+      %p.notice= notice
+      %p.alert= alert
+
+      = yield
