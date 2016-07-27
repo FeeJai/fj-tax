@@ -8,5 +8,7 @@ Rails.application.routes.draw do
 
   resources :tax_returns
 
+  get 'visits', to: 'visits#import'
+  get 'visits/:id', to: 'visits#results'
 
 end

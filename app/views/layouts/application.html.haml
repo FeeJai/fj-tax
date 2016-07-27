@@ -12,17 +12,18 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     %nav.navbar.navbar-light.navbar-fixed-top{style: "background-color: #e3f2fd"}
-      %button.navbar-toggler.hidden-sm-up{"data-target" => "#exCollapsingNavbar2", "data-toggle" => "collapse", :type => "button"} ☰
+      .container
+        %button.navbar-toggler.hidden-sm-up{"data-target" => "#exCollapsingNavbar2", "data-toggle" => "collapse", :type => "button"} ☰
 
-      .collapse.navbar-toggleable-xs#exCollapsingNavbar2
-        %a.navbar-brand{:href => "#"} FJ Tax
-        .nav.navbar-nav.pull-xs-right
-          %a.nav-item.nav-link.active{:href => "#"}
-            Home
-            %span.sr-only (current)
-          %a.nav-item.nav-link{:href => "#"} Features
-          %a.nav-item.nav-link{:href => "#"} Pricing
-          %a.nav-item.nav-link{:href => "#"} About
+        .collapse.navbar-toggleable-xs#exCollapsingNavbar2
+          %a.navbar-brand{:href => "#"} FJ Tax
+          .nav.navbar-nav.pull-xs-right
+            %a.nav-item.nav-link.active{:href => "#"}
+              Home
+              %span.sr-only (current)
+            %a.nav-item.nav-link{:href => "#"} Features
+            %a.nav-item.nav-link{:href => "#"} Pricing
+            %a.nav-item.nav-link{:href => "#"} About
 
     .container
       .bg

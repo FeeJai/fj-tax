@@ -3,10 +3,22 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+#fork-on-github {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border: 0;
+  z-index: 9999;
+}
+
+
 //Parallax
 
+//= depend_on_asset "tax-refund.jpg"
+
 .bg {
-  background: url('/assets/tax-refund.jpg') no-repeat center center;
+  background: url('<%= asset_path('tax-refund.jpg') %>') no-repeat center center;
+  opacity: 0.6;
   background-size: 100%;
   position: fixed;
   width: 100%;
