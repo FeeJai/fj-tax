@@ -6,7 +6,7 @@
     %meta{:charset => "utf-8"}/
     %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}/
     %meta{:content => "ie=edge", "http-equiv" => "x-ua-compatible"}/
-    %title FJ Tax - Free and open source tax return for J-1
+    %title opentax.io - Free and open source tax return for J-1
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
@@ -16,14 +16,12 @@
         %button.navbar-toggler.hidden-sm-up{"data-target" => "#exCollapsingNavbar2", "data-toggle" => "collapse", :type => "button"} ☰
 
         .collapse.navbar-toggleable-xs#exCollapsingNavbar2
-          %a.navbar-brand{:href => "#"} FJ Tax
+          %a.navbar-brand{:href => "/"} opentax.io
           .nav.navbar-nav.pull-md-right
-            %a.nav-item.nav-link.active{:href => "#"}
-              Home
-              %span.sr-only (current)
-            %a.nav-item.nav-link{:href => "#"} FAQ
-            %a.nav-item.nav-link{:href => "#"} My Tax Returns
-            %a.nav-item.nav-link{:href => "#"} Sign In / Sign Up
+            =link_to 'Home', root_url, class: "nav-item nav-link #{current_page?(root_url) ? "active" : "" }"
+            =link_to 'FAQ', faq_url, class: "nav-item nav-link #{current_page?(faq_url) ? "active" : "" }"
+            =link_to 'My Tax Returns', tax_returns_url, class: "nav-item nav-link #{current_page?(tax_returns_url) ? "active" : "" }"
+            %a.nav-item.nav-link{:href => "#"} Register / Sign In
 
             .nav-item.dropdown
               %a.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
@@ -35,16 +33,15 @@
                   - unless loc == I18n.locale
                     = link_to_locale(loc)
 
-      =#%p.alert.alert-info= notice
-      =#%p.alert.alert-warning= alert
-
-
     .container
+
       .bg
       .jumbotron
-        %h1.display-3
+        %h1.display-4
           = t 'landing.heading'
         .lead
           = t 'landing.subtitle'
+
+      = flash_messages
 
       = yield

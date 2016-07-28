@@ -1,0 +1,8 @@
+%p &nbsp;
+
+%h2 FAQ
+
+- t('.faq').each do |faq|
+  %p
+    %h4= faq[:q]
+    = faq[:a]

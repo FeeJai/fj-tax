@@ -1,2 +1,0 @@
-class TaxReturnController < ApplicationController
-end
