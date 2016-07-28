@@ -41,6 +41,7 @@ gem 'devise'
 # Bootstrap as design layout for now
 gem 'rails-assets-tether', '>= 1.1.0'
 gem 'bootstrap', '~> 4.0.0.alpha3'
+gem 'flag_icon_css_rails'
 
 # Use hamlit for HTML abstraction
 gem 'hamlit'

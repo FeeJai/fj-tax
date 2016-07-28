@@ -11,9 +11,18 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_self
- *= require tax_return    
+ *= require tax_return
+ *= require_tree .
  */
 
 // Ref: https://github.com/twbs/bootstrap-rubygem
 // Custom bootstrap variables must be set or imported before bootstrap itself.
 @import "bootstrap";
+@import "flag_icon_css";
+
+
+/* use usa flag for locale :en */
+
+.flag-icon-en {
+    @extend .flag-icon-us; // !optional;
+}

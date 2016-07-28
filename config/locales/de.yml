@@ -19,11 +19,11 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
+de:
   i18n:
     language:
-      name: 'English'
+      name: 'Deutsch'
 
   landing:
     heading: 'Non-Resident Tax'
-    subtitle: 'Free USA tax returns for international visitors'
+    subtitle: 'Amerikanische Steuererklärung gratis für internationale Studenten'

@@ -11,19 +11,33 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    %nav.navbar.navbar-light.navbar-fixed-top{style: "background-color: #e3f2fd"}
+    %nav.navbar.navbar-dark.bg-primary.navbar-fixed-top
       .container
         %button.navbar-toggler.hidden-sm-up{"data-target" => "#exCollapsingNavbar2", "data-toggle" => "collapse", :type => "button"} ☰
 
         .collapse.navbar-toggleable-xs#exCollapsingNavbar2
           %a.navbar-brand{:href => "#"} FJ Tax
-          .nav.navbar-nav.pull-xs-right
+          .nav.navbar-nav.pull-md-right
             %a.nav-item.nav-link.active{:href => "#"}
               Home
               %span.sr-only (current)
-            %a.nav-item.nav-link{:href => "#"} Features
-            %a.nav-item.nav-link{:href => "#"} Pricing
-            %a.nav-item.nav-link{:href => "#"} About
+            %a.nav-item.nav-link{:href => "#"} FAQ
+            %a.nav-item.nav-link{:href => "#"} My Tax Returns
+            %a.nav-item.nav-link{:href => "#"} Sign In / Sign Up
+
+            .nav-item.dropdown
+              %a.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                %span.flag-icon.flag-icon-squared{class: "flag-icon-#{I18n.locale}"}
+              .dropdown-menu.dropdown-menu-right
+                = link_to_locale(I18n.locale)
+                .dropdown-divider
+                - I18n.available_locales.each do |loc|
+                  - unless loc == I18n.locale
+                    = link_to_locale(loc)
+
+      =#%p.alert.alert-info= notice
+      =#%p.alert.alert-warning= alert
+
 
     .container
       .bg
@@ -32,9 +46,5 @@
           = t 'landing.heading'
         .lead
           = t 'landing.subtitle'
-
-
-      %p.notice= notice
-      %p.alert= alert
 
       = yield
