@@ -3,6 +3,11 @@ source 'https://rubygems.org'
 # Ruby version for Herku
 ruby "2.3.0"
 
+
+### Server Side
+
+## bare metal
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0'
 # Use postgresql as the database for Active Record
@@ -12,19 +17,13 @@ gem 'annotate'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.2'
+# gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
-# Use jquery as the JavaScript library
-gem 'jquery-rails'
-# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
@@ -35,20 +34,42 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+##  logic
+
 # Use devise for user authenitcation and authorization
 gem 'devise'
-
-# Bootstrap as design layout for now
-gem 'rails-assets-tether', '>= 1.1.0'
-gem 'bootstrap', '~> 4.0.0.alpha3'
-gem 'flag_icon_css_rails'
-
-# Use hamlit for HTML abstraction
-gem 'hamlit'
 
 # This is the web scraping part (for passport import)
 gem 'nokogiri'
 gem 'httparty'
+
+
+### frontend
+## view
+
+# Use SCSS for stylesheets
+gem 'sass-rails', '~> 5.0'
+
+# Use hamlit for HTML abstraction
+gem 'hamlit'
+
+# Bootstrap as design layout for now
+gem 'rails-assets-tether', '>= 1.1.0'
+gem 'bootstrap', '~> 4.0.0.alpha3'
+
+# Other styling gems go here
+gem 'flag_icon_css_rails'
+
+## frontend logic
+
+# Use jquery as the JavaScript library
+gem 'jquery-rails'
+# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
+gem 'turbolinks', '~> 5'
+
+
+
+### environment specific
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -68,7 +89,7 @@ group :development do
 end
 
 group :production do
-  gem 'rails_12factor'
+  gem 'rails_12factor' #TODO: Heroku - remove, not required for Rails 5
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

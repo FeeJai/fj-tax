@@ -1,0 +1,62 @@
+#importModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "import i94", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+        %h4#myModalLabel.modal-title Import i94 from USCBP
+      .modal-body
+
+        = form_tag(visits_import_url, id: 'importi94form',remote: true, 'data-type': :json) do
+          = submit_tag("Search")
+
+
+
+
+      .modal-footer
+        %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Abort
+        %button.btn.btn-primary{:type => "button"} Import now
+
+
+
+:javascript
+  $(function(){
+    var job_id = null;
+
+    //perform the first ajax call
+    $("form#importi94form").on('ajax:success', function(event, data, status, xhr) {
+      console.assert(status == "success");
+      console.log(data.job_id);
+      job_id = data.job_id;
+      $('#importModal').modal('hide');
+
+      setTimeout(load_import_data, 1000);
+    });
+
+    $("form#importi94form").on('ajax:error', function(event, xhr, status, error) {
+      console.log("ajax request failed");
+    });
+
+    function load_import_data() {
+      // inspired by: http://stackoverflow.com/questions/17862015/http-statuscode-to-retry-same-request
+      $.getScript({
+        type: 'GET',
+        url:  'visits/import_result/' + job_id,
+        success: function(result) {
+          console.log(result)
+          // similar to the rails UJS remote: true
+          // http://sts10.github.io/blog/2014/04/12/data-remote-true/
+          // $.getScript($(this).href())
+        },
+        statusCode: {
+          202: function(jqXHR) {
+            var retryAfter = jqXHR.getResponseHeader('Retry-After');
+            retryAfter = parseInt(retryAfter, 10);
+            if (!retryAfter) retryAfter = 5;
+            setTimeout(load_import_data, retryAfter * 1000);
+          }
+        }
+      });
+    }
+
+  })

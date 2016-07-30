@@ -11,7 +11,8 @@ Rails.application.routes.draw do
 
 
   # AJAX / API
-  get 'visits', to: 'visits#import'
-  get 'visits/:id', to: 'visits#results'
+  get 'visits/new', to: 'visits#new'
+  post 'visits/import', to: 'visits#import'
+  get 'visits/import_result/:job_id', to: 'visits#import_result', as: 'import_result'
 
 end

@@ -1,19 +1,80 @@
 %a.hidden-lg-down{:href => "https://github.com/FeeJai/fj-tax"}
   %img#fork-on-github{:alt => "Fork me on GitHub", "data-canonical-src" => "https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png", :src => "https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" }/
 
-
 %h2 Calculate your estimate
+.row
+  .col-lg-8
+    %h4 Your Data
+    %h5 Details on your stay
 
-%h5 Visits to the US in the last 5 years
 
-%p &nbsp;
-%p &nbsp;
-%p &nbsp;
+    %h6 What year do you want to file the tax return for?
 
-%h2 Caution
-%p
-  This is a hobby project. While I hope that it will be helpful, I can not guarantee accuracy and correctness. It is your sole responsibility to submit a valid tax return - always verify the results of this software and ensure correctness. Also, please read the
-  =link_to "FAQ", faq_url
+    %p 2015
 
-%h3 Warranty
-%p This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Affero General Public License for more details.
+
+    %h6 What way your tax residency in the year that you are filing for ?
+    %p Note: Under J1 visa regulations, the tax residency usually is the country of citizenship
+    %p I am not and have never been a US citizen or permanent resident (e.g. "green card" holder)
+
+
+
+    %h6 Visits to the US in that tax year and the six prior years
+
+    %table.table.table-hover.table-sm#visits-table
+      %thead
+        %tr
+          %th #
+          %th Entry Date
+          %th Exit Date
+          %th Visa Category; Program Type
+      %tbody
+        = #render "estimate/visit_table_row"
+
+    %p
+      = link_to "+", visits_new_url, remote: true, class:"btn btn-success btn-sm"
+      %a.btn.btn-primary.btn-sm{"data-target" => "#importModal", "data-toggle" => "modal", :type => "button"}
+        Import i94 immigration records
+
+    %h6 Marriage
+    %p Unmarried, Married to a non-resident, Married to a resident (no-go)
+
+    %h5 Details on your employment
+
+    %h6 What was your J-1 program type?
+    %p Intern/Trainee; Student; Work and Travel; Teacher/Researcher; Other
+    %p NOTE: This is in block 2 of your DS2019
+
+
+    %h6 Total wages
+    %p Form W-2: Field: 1
+
+    %h6 Federal Income Tax withheld
+    %p Form W-2: Field: 2
+
+
+    %h6 State / State Tax Withheld
+    %p Form W-2: Field: 17
+
+    %h6 Social Security / Medicare Tax
+    %p Verify it is 0
+
+
+  .col-lg-4
+    %h4 Your Result:
+
+
+    %p &nbsp;
+    %p &nbsp;
+    %p &nbsp;
+
+    %h2 Caution
+    %p
+      This is a hobby project. While I hope that it will be helpful, I can not guarantee accuracy and correctness. It is your sole responsibility to submit a valid tax return - always verify the results of this software and ensure correctness. Also, please read the
+      =link_to "FAQ", faq_url
+
+    %h3 Warranty
+    %p This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Affero General Public License for more details.
+
+
+= render "visits/import_modal"
